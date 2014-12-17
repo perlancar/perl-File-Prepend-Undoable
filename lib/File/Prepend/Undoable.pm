@@ -121,7 +121,7 @@ sub prepend {
 }
 
 1;
-# ABSTRACT: Prepend string to a file, with undo support
+# ABSTRACT:
 
 =head1 SEE ALSO
 
