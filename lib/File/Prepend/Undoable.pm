@@ -1,13 +1,14 @@
 package File::Prepend::Undoable;
 
+# DATE
+# VERSION
+
 use 5.010001;
 use strict;
 use warnings;
-use Log::Any '$log';
+use Log::Any::IfLOG '$log';
 
 use File::Trash::Undoable;
-
-# VERSION
 
 our %SPEC;
 
