@@ -6,7 +6,7 @@ package File::Prepend::Undoable;
 use 5.010001;
 use strict;
 use warnings;
-use Log::Any::IfLOG '$log';
+use Log::ger;
 
 use File::Trash::Undoable;
 
@@ -94,7 +94,7 @@ sub prepend {
                             "won't prepend twice"];
             }
         }
-        $log->info("(DRY) Prepending string to file $path ...") if $dry_run;
+        log_info("(DRY) Prepending string to file $path ...") if $dry_run;
         return [200, "File $path needs to be prepended with a string", undef,
                 {undo_actions=>[
                     ['File::Trash::Undoable::untrash', # restore original
@@ -103,7 +103,7 @@ sub prepend {
                      {path=>$path, suffix=>substr($taid,0,8)."n"}],
                 ]}];
     } elsif ($tx_action eq 'fix_state') {
-        $log->info("Prepending string to file $path ...");
+        log_info("Prepending string to file $path ...");
         my $res = File::Trash::Undoable::trash(
             -tx_action=>'fix_state', path=>$path, suffix=>substr($taid,0,8));
         return $res unless $res->[0] == 200 || $res->[0] == 304;
